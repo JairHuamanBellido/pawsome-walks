@@ -677,6 +677,146 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiButtonButton extends Schema.CollectionType {
+  collectionName: 'buttons';
+  info: {
+    singularName: 'button';
+    pluralName: 'buttons';
+    displayName: '\uD83E\uDDE9-Button';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    EntryTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    nav_link: Attribute.Relation<
+      'api::button.button',
+      'oneToOne',
+      'api::nav-link.nav-link'
+    >;
+    variant: Attribute.Enumeration<['Primary', 'Secondary']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::button.button',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::button.button',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::button.button',
+      'oneToMany',
+      'api::button.button'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHeroBannerHeroBanner extends Schema.CollectionType {
+  collectionName: 'hero_banners';
+  info: {
+    singularName: 'hero-banner';
+    pluralName: 'hero-banners';
+    displayName: '\uD83D\uDCE6-HeroBanner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    heading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subheading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    EntryTitle: Attribute.String &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Component<'components.media'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'components.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hero-banner.hero-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hero-banner.hero-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::hero-banner.hero-banner',
+      'oneToMany',
+      'api::hero-banner.hero-banner'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiNavLinkNavLink extends Schema.CollectionType {
   collectionName: 'nav_links';
   info: {
@@ -846,6 +986,12 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    sections: Attribute.DynamicZone<['components.hero-banner']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -878,6 +1024,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::button.button': ApiButtonButton;
+      'api::hero-banner.hero-banner': ApiHeroBannerHeroBanner;
       'api::nav-link.nav-link': ApiNavLinkNavLink;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;

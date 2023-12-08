@@ -12,7 +12,7 @@ export class PageService {
   }): Promise<IPageDomain | undefined> {
     const strapiPage = await StrapiPageRepository.findBySlug({ locale, slug });
 
-    if (!strapiPage.data.length) {
+    if (!strapiPage) {
       return undefined;
     }
     return PageMapper.toDomain(strapiPage);

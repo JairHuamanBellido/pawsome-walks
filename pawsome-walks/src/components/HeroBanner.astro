@@ -1,0 +1,36 @@
+---
+import type { IHeroBannerDomain } from "../lib/domain/interfaces/IHeroBannerDomain.interface";
+import { Image } from "astro:assets";
+import SectionLayout from "./SectionLayout.astro";
+import { cn } from "../lib/utils";
+import Heading1 from "./Heading1.astro";
+import Paragraph from "./Paragraph.astro";
+interface Props extends IHeroBannerDomain {}
+
+const { button, heading, image, subheading } = Astro.props;
+---
+
+<section class={cn("w-full  relative", "mobile:h-[500px]", "tablet:h-[700px]")}>
+  <SectionLayout className="h-full flex items-center">
+    <div class="w-full flex items-center justify-between">
+      <div class="mobile:w-full tablet:w-1/2">
+        <Heading1 className="mb-4 text-[#1A2504]">
+          <Fragment set:text={heading} />
+        </Heading1>
+        <Paragraph className="mb-8 text-black/60 text-xl ">
+          <Fragment set:text={subheading} />
+        </Paragraph>
+        {
+          button && (
+            <button class="rounded-md font-general-sans font-medium p-4 bg-primary-500 uppercase">
+              {button.label}
+            </button>
+          )
+        }
+      </div>
+      <div class={cn("mobile:hidden", "tablet:block mx-auto")}>
+        <Image width="400" height="400" src={image.url} alt={image.altText} />
+      </div>
+    </div>
+  </SectionLayout>
+</section>

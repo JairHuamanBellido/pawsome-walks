@@ -8,7 +8,6 @@ interface Props extends Partial<HTMLAnchorElement> {
 const { href, label, className } = Astro.props;
 const parseHref = href === "/" ? "" : href;
 const locale = Astro.currentLocale as string;
-console.log(Astro.currentLocale);
 ---
 
 <a

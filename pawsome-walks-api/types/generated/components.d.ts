@@ -1,5 +1,35 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ComponentsButton extends Schema.Component {
+  collectionName: 'components_components_buttons';
+  info: {
+    displayName: '\uD83E\uDDE9-Button';
+    description: '';
+  };
+  attributes: {
+    button: Attribute.Relation<
+      'components.button',
+      'oneToOne',
+      'api::button.button'
+    >;
+  };
+}
+
+export interface ComponentsHeroBanner extends Schema.Component {
+  collectionName: 'components_components_hero_banners';
+  info: {
+    displayName: '\uD83D\uDCE6-HeroBanner';
+    description: '';
+  };
+  attributes: {
+    hero_banner: Attribute.Relation<
+      'components.hero-banner',
+      'oneToOne',
+      'api::hero-banner.hero-banner'
+    >;
+  };
+}
+
 export interface ComponentsMedia extends Schema.Component {
   collectionName: 'components_components_medias';
   info: {
@@ -67,6 +97,8 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'components.button': ComponentsButton;
+      'components.hero-banner': ComponentsHeroBanner;
       'components.media': ComponentsMedia;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;

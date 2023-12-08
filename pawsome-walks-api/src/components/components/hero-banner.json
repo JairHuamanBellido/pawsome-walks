@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_hero_banners",
+  "info": {
+    "displayName": "📦-HeroBanner",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "hero_banner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero-banner.hero-banner"
+    }
+  }
+}

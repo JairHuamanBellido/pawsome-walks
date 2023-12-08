@@ -1,19 +1,33 @@
 ---
 import { PageService } from "../../lib/domain/services/PageService";
 import Layout from "../../layout/layout.astro";
-const { slug, lang } = Astro.params;
+import HeroBanner from "../../components/HeroBanner.astro";
+const { slug } = Astro.params;
 
 const parseSlug = slug ?? "home";
 const page = await PageService.findBySlug({
   slug: parseSlug,
-  locale: lang ?? "en",
+  locale: Astro.currentLocale ?? "en",
 });
+
 if (!page) return Astro.redirect("/404");
 
-const { seo, title } = page;
+const { seo, title, sections } = page;
 ---
 
 <Layout title={title} description={seo.metaDescription}>
-  <h1 class="font-general-sans text-4xl">{title}</h1>
-  <h1 class="font-google-sans  text-4xl">{title}</h1>
+  {
+    sections.map((component) => {
+      const mapperComponent: { [key: string]: any } = {
+        HeroBanner,
+      };
+      const Component = mapperComponent[component.id];
+
+      if (Component) {
+        const rest = component;
+        return <Component {...rest} />;
+      }
+      return null;
+    })
+  }
 </Layout>

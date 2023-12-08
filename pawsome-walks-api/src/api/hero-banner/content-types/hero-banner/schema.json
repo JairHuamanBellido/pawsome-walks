@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "hero_banners",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
-    "description": ""
+    "singularName": "hero-banner",
+    "pluralName": "hero-banners",
+    "displayName": "📦-HeroBanner"
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +15,24 @@
     }
   },
   "attributes": {
+    "heading": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "subheading": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
     "EntryTitle": {
       "pluginOptions": {
         "i18n": {
@@ -23,20 +40,9 @@
         }
       },
       "type": "string",
-      "required": true,
-      "private": true,
-      "unique": true
+      "private": true
     },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
-    "seo": {
+    "image": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -44,28 +50,18 @@
           "localized": true
         }
       },
-      "component": "shared.seo",
+      "component": "components.media",
       "required": true
     },
-    "title": {
+    "button": {
+      "type": "component",
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
-      "required": true
-    },
-    "sections": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "components.hero-banner"
-      ]
+      "component": "components.button"
     }
   }
 }

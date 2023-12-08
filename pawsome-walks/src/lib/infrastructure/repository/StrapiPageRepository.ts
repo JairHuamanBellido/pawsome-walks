@@ -8,13 +8,15 @@ export class StrapiPageRepository {
   }: {
     locale: string;
     slug: string;
-  }): Promise<IStrapiBase<IStrapiPage>> {
+  }): Promise<IStrapiPage> {
     const params = new URLSearchParams({
       [`filters[slug][$eq]`]: slug,
       populate: "*",
       locale,
     });
 
-    return await fetch(`${import.meta.env.API}/pages?` + params).then((res) => res.json());
+    return await fetch(`${import.meta.env.API}/pages?` + params).then((res) =>
+      res.json()
+    );
   }
 }

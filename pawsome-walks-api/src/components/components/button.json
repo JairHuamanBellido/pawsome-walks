@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_buttons",
+  "info": {
+    "displayName": "🧩-Button",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "button": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::button.button"
+    }
+  }
+}

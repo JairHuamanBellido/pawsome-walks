@@ -13,6 +13,13 @@ export default {
       "general-sans": ["GeneralSans"],
       "google-sans": ["GoogleSans"],
     },
+    screens: {
+      mobile: "320px",
+      tablet: "768px",
+      desktop: "1024px",
+      "m-desktop": "1440px",
+      "lg-desktop": "1920px",
+    },
   },
   plugins: [],
 };
