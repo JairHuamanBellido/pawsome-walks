@@ -1,0 +1,18 @@
+---
+import { PageService } from "../../lib/domain/services/PageService";
+import Layout from "../../layout/layout.astro";
+const { slug, lang } = Astro.params;
+
+const parseSlug = slug ?? "home";
+const page = await PageService.findBySlug({
+  slug: parseSlug,
+  locale: lang ?? "en",
+});
+if (!page) return Astro.redirect("/404");
+
+const { seo, title } = page;
+---
+
+<Layout title={title} description={seo.metaDescription}>
+  <h1>{title}</h1>
+</Layout>
