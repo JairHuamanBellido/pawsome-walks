@@ -1,4 +1,3 @@
-import { httpClient } from "../../core/http-client";
 import type { IStrapiBase } from "../interface/IStrapiBase.interface";
 import type { IStrapiPage } from "../interface/IStrapiPage.interface";
 

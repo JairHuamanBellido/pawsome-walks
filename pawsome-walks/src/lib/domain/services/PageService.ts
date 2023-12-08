@@ -1,4 +1,4 @@
-import { StrapiPageRepository } from "../../infrastructure/pages/StrapiPageRepository";
+import { StrapiPageRepository } from "../../infrastructure/repository/StrapiPageRepository";
 import type { IPageDomain } from "../interfaces/IPageDomain.interface";
 import { PageMapper } from "../mapper/PageMapper";
 

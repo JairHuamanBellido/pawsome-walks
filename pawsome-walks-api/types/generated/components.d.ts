@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ComponentsMedia extends Schema.Component {
+  collectionName: 'components_components_medias';
+  info: {
+    displayName: '\uD83D\uDCF7-Media';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media;
+    altText: Attribute.String;
+    EntryTitle: Attribute.String & Attribute.Required & Attribute.Private;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -54,6 +67,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'components.media': ComponentsMedia;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

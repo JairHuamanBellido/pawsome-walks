@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import type { INavigationDomain } from "../lib/domain/interfaces/INavigationDomain.interface";
+import Link from "./Link.astro";
+interface Props extends INavigationDomain {}
+
+const { logo, navLinks } = Astro.props;
+---
+
+<nav
+  class="h-[80px] max-w-[1440px] mx-auto relative flex items-center p-4 justify-between"
+>
+  <div class="flex items-center space-x-2">
+    <Image width="48" src={logo.url} alt={logo.altText} height="48" />
+    <h1 class="font-google-sans  text-2xl">Pawsome walks</h1>
+  </div>
+  <ul>
+    {
+      navLinks.map((navLink) => (
+        <li>
+          <Link label={navLink.label} href={navLink.href} />
+        </li>
+      ))
+    }
+  </ul>
+</nav>

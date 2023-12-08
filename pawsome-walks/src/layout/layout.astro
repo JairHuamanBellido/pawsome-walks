@@ -1,10 +1,14 @@
 ---
+import { NavigationService } from "../lib/domain/services/NavigationService";
+import Navbar from "../components/Navbar.astro";
 interface Props {
   readonly title: string;
   readonly description: string;
 }
 
 const { description, title } = Astro.props;
+
+const navigation = await NavigationService.find(Astro.currentLocale ?? "en");
 ---
 
 <html lang="en">
@@ -81,6 +85,11 @@ const { description, title } = Astro.props;
   </head>
   <body>
     <main>
+      {
+        navigation && (
+          <Navbar logo={navigation.logo} navLinks={navigation.navLinks} />
+        )
+      }
       <slot />
     </main>
   </body>

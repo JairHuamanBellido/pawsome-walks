@@ -1,0 +1,19 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { cn } from "../lib/utils/index";
+interface Props extends Partial<HTMLAnchorElement> {
+  readonly label: string;
+  readonly href: string;
+}
+const { href, label, className } = Astro.props;
+const parseHref = href === "/" ? "" : href;
+const locale = Astro.currentLocale as string;
+console.log(Astro.currentLocale);
+---
+
+<a
+  class={cn("text-base font-general-sans font-medium", className)}
+  href={getRelativeLocaleUrl(locale, parseHref)}
+>
+  {label}
+</a>
