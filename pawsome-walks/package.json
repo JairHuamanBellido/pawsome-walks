@@ -11,10 +11,17 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
+    "@astrojs/react": "^3.0.7",
     "@astrojs/tailwind": "^5.0.3",
+    "@strapi/blocks-react-renderer": "1.0.0-beta.2",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "astro": "^4.0.3",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "swiper": "^11.0.5",
     "tailwind-merge": "^2.1.0",
     "tailwindcss": "^3.0.24",
     "typescript": "^5.3.3"

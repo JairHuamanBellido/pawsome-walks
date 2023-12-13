@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_components_section_real_cases",
+  "info": {
+    "displayName": "📦-section-RealCases",
+    "icon": "",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "section_real_case": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::section-real-case.section-real-case"
+    }
+  }
+}

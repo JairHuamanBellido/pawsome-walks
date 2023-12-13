@@ -1,0 +1,17 @@
+---
+import { ButtonVariants } from "../lib/core/constants";
+import { cn } from "../lib/utils";
+interface Props {
+  variant: ButtonVariants;
+}
+const { variant } = Astro.props;
+---
+
+<button
+  class={cn("rounded-md font-general-sans uppercase p-4 font-medium", {
+    "bg-primary-500": variant === ButtonVariants.Primary,
+    "text-primary-500 underline": variant === ButtonVariants.Link,
+  })}
+>
+  <slot />
+</button>

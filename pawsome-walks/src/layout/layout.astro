@@ -81,6 +81,11 @@ const navigation = await NavigationService.find(Astro.currentLocale ?? "en");
         font-style: normal;
         font-display: swap;
       }
+      .carousel-container p {
+        @apply line-clamp-2;
+        @apply font-general-sans;
+        @apply leading-[1.5];
+      }
     </style>
   </head>
   <body>

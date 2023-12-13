@@ -2,6 +2,7 @@
 import { PageService } from "../../lib/domain/services/PageService";
 import Layout from "../../layout/layout.astro";
 import HeroBanner from "../../components/HeroBanner.astro";
+import SectionRealCases from "../../components/SectionRealCases.astro";
 const { slug } = Astro.params;
 
 const parseSlug = slug ?? "home";
@@ -13,15 +14,19 @@ const page = await PageService.findBySlug({
 if (!page) return Astro.redirect("/404");
 
 const { seo, title, sections } = page;
+const mapperComponent: { [key: string]: any } = {
+  HeroBanner,
+  SectionRealCases: SectionRealCases,
+};
 ---
 
 <Layout title={title} description={seo.metaDescription}>
   {
     sections.map((component) => {
-      const mapperComponent: { [key: string]: any } = {
-        HeroBanner,
-      };
-      const Component = mapperComponent[component.id];
+      if (!component) {
+        return;
+      }
+      const Component = mapperComponent[component.id as string];
 
       if (Component) {
         const rest = component;

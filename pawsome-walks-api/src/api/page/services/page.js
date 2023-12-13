@@ -12,6 +12,9 @@ module.exports = createCoreService("api::page.page", ({ strapi }) => ({
       populate: [
         "sections.hero_banner.image.image",
         "sections.hero_banner.button.button.nav_link",
+        "sections.section_real_case",
+        "sections.section_real_case.real_cases.dog.image.image",
+        "sections.section_real_case.real_cases.person.image.image",
         "seo",
       ],
       where: {

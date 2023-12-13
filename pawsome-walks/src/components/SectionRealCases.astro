@@ -1,0 +1,30 @@
+---
+import type { ISectionRealCaseDomain } from "../lib/domain/interfaces/IRealCaseDomain.interface";
+import { cn } from "../lib/utils";
+import SectionLayout from "./SectionLayout.astro";
+import Heading2 from "./Heading2.astro";
+import Carousel from "./Carousel.astro";
+
+interface Props extends ISectionRealCaseDomain {}
+
+const { headline, real_cases } = Astro.props;
+---
+
+<section class={cn("w-full")}>
+  <SectionLayout className="w-full relative">
+    <div class="w-full flex justify-center items-center">
+      <div class={cn("w-1/2")}>
+        <Heading2 className={cn("font-light")} set:text={headline} />
+      </div>
+      <div class={cn("w-1/2")}>
+        <Carousel
+          data={real_cases.map((val) => ({
+            content: val.content,
+            headline: val.title,
+            image: val.dog.image,
+          }))}
+        />
+      </div>
+    </div>
+  </SectionLayout>
+</section>

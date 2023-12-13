@@ -1,0 +1,39 @@
+---
+import type { IImageDomain } from "../lib/domain/interfaces/IImageDomain.interface";
+import { Image } from "astro:assets";
+import Heading3 from "./Heading3.astro";
+import RichTextBlock from "./RichTextBlock";
+import { type BlocksContent } from "@strapi/blocks-react-renderer";
+interface Props {
+  readonly data: {
+    readonly image: IImageDomain;
+    readonly headline: string;
+    readonly content: BlocksContent;
+  }[];
+}
+
+const { data } = Astro.props;
+---
+
+<swiper-container class="mySwiper" space-between="80" slides-per-view="auto">
+  {
+    data.map((data) => (
+      <swiper-slide class={"p-4 max-w-[50%] min-h-[400px]"}>
+        <Image
+          width={"400"}
+          height={"200"}
+          class={"h-[200px]"}
+          src={data.image.url}
+          alt={data.image.url}
+        />
+        <Heading3 className="mt-4 text-primary-700" set:text={data.headline} />
+        <div class="carousel-container mt-1 text-primary-950">
+          <RichTextBlock content={data.content} />
+        </div>
+      </swiper-slide>
+    ))
+  }
+</swiper-container>
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+  async></script>

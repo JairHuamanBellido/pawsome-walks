@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "real_cases",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
+    "singularName": "real-case",
+    "pluralName": "real-cases",
+    "displayName": "📦-RealCase",
     "description": ""
   },
   "options": {
@@ -24,28 +24,7 @@
       },
       "type": "string",
       "required": true,
-      "private": true,
-      "unique": true
-    },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "shared.seo",
-      "required": true
+      "private": true
     },
     "title": {
       "pluginOptions": {
@@ -56,17 +35,32 @@
       "type": "string",
       "required": true
     },
-    "sections": {
+    "fullTestimonial": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
-      "components": [
-        "components.hero-banner",
-        "components.section-real-cases"
-      ]
+      "type": "richtext",
+      "required": true
+    },
+    "dog": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dog.dog"
+    },
+    "person": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::person.person"
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks"
     }
   }
 }

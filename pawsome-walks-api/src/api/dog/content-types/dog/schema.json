@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "dogs",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
-    "description": ""
+    "singularName": "dog",
+    "pluralName": "dogs",
+    "displayName": "📦-Dog"
   },
   "options": {
     "draftAndPublish": true
@@ -24,10 +23,9 @@
       },
       "type": "string",
       "required": true,
-      "private": true,
-      "unique": true
+      "private": true
     },
-    "slug": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -36,7 +34,16 @@
       "type": "string",
       "required": true
     },
-    "seo": {
+    "race": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "image": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -44,29 +51,16 @@
           "localized": true
         }
       },
-      "component": "shared.seo",
-      "required": true
+      "component": "components.media"
     },
-    "title": {
+    "years": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
+      "type": "integer",
       "required": true
-    },
-    "sections": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "components.hero-banner",
-        "components.section-real-cases"
-      ]
     }
   }
 }

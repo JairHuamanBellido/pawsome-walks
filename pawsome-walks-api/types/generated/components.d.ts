@@ -43,6 +43,22 @@ export interface ComponentsMedia extends Schema.Component {
   };
 }
 
+export interface ComponentsSectionRealCases extends Schema.Component {
+  collectionName: 'components_components_section_real_cases';
+  info: {
+    displayName: '\uD83D\uDCE6-section-RealCases';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    section_real_case: Attribute.Relation<
+      'components.section-real-cases',
+      'oneToOne',
+      'api::section-real-case.section-real-case'
+    >;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -100,6 +116,7 @@ declare module '@strapi/types' {
       'components.button': ComponentsButton;
       'components.hero-banner': ComponentsHeroBanner;
       'components.media': ComponentsMedia;
+      'components.section-real-cases': ComponentsSectionRealCases;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

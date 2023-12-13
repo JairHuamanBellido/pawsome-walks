@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "section_real_cases",
+  "info": {
+    "singularName": "section-real-case",
+    "pluralName": "section-real-cases",
+    "displayName": "📦-section-RealCase"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "EntryTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "private": true,
+      "unique": false
+    },
+    "headline": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "real_cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::real-case.real-case"
+    }
+  }
+}

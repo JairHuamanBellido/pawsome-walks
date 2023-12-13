@@ -743,6 +743,73 @@ export interface ApiButtonButton extends Schema.CollectionType {
   };
 }
 
+export interface ApiDogDog extends Schema.CollectionType {
+  collectionName: 'dogs';
+  info: {
+    singularName: 'dog';
+    pluralName: 'dogs';
+    displayName: '\uD83D\uDCE6-Dog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    EntryTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    race: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Component<'components.media'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    years: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::dog.dog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::dog.dog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::dog.dog',
+      'oneToMany',
+      'api::dog.dog'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHeroBannerHeroBanner extends Schema.CollectionType {
   collectionName: 'hero_banners';
   info: {
@@ -986,7 +1053,9 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    sections: Attribute.DynamicZone<['components.hero-banner']> &
+    sections: Attribute.DynamicZone<
+      ['components.hero-banner', 'components.section-real-cases']
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1003,6 +1072,207 @@ export interface ApiPagePage extends Schema.CollectionType {
       'api::page.page',
       'oneToMany',
       'api::page.page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPersonPerson extends Schema.CollectionType {
+  collectionName: 'people';
+  info: {
+    singularName: 'person';
+    pluralName: 'people';
+    displayName: '\uD83D\uDCE6-Person';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    EntryTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fullname: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Component<'components.media'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::person.person',
+      'oneToMany',
+      'api::person.person'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiRealCaseRealCase extends Schema.CollectionType {
+  collectionName: 'real_cases';
+  info: {
+    singularName: 'real-case';
+    pluralName: 'real-cases';
+    displayName: '\uD83D\uDCE6-RealCase';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    EntryTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fullTestimonial: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    dog: Attribute.Relation<
+      'api::real-case.real-case',
+      'oneToOne',
+      'api::dog.dog'
+    >;
+    person: Attribute.Relation<
+      'api::real-case.real-case',
+      'oneToOne',
+      'api::person.person'
+    >;
+    content: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::real-case.real-case',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::real-case.real-case',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::real-case.real-case',
+      'oneToMany',
+      'api::real-case.real-case'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSectionRealCaseSectionRealCase
+  extends Schema.CollectionType {
+  collectionName: 'section_real_cases';
+  info: {
+    singularName: 'section-real-case';
+    pluralName: 'section-real-cases';
+    displayName: '\uD83D\uDCE6-section-RealCase';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    EntryTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    headline: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    real_cases: Attribute.Relation<
+      'api::section-real-case.section-real-case',
+      'oneToMany',
+      'api::real-case.real-case'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::section-real-case.section-real-case',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::section-real-case.section-real-case',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::section-real-case.section-real-case',
+      'oneToMany',
+      'api::section-real-case.section-real-case'
     >;
     locale: Attribute.String;
   };
@@ -1025,10 +1295,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::button.button': ApiButtonButton;
+      'api::dog.dog': ApiDogDog;
       'api::hero-banner.hero-banner': ApiHeroBannerHeroBanner;
       'api::nav-link.nav-link': ApiNavLinkNavLink;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;
+      'api::person.person': ApiPersonPerson;
+      'api::real-case.real-case': ApiRealCaseRealCase;
+      'api::section-real-case.section-real-case': ApiSectionRealCaseSectionRealCase;
     }
   }
 }
